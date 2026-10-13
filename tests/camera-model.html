@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Camera worker integration check</title><h1>Camera worker integration check</h1><p id="status" role="status">Loading the optional model. No camera permission or video is used.</p><script>
+const status = document.getElementById('status');
+const worker = new Worker('../src/camera-worker.js');
+const timeout = setTimeout(() => { status.textContent = 'FAIL: model load timed out'; worker.terminate(); }, 120000);
+worker.onerror = event => { status.textContent = 'FAIL: ' + event.message; clearTimeout(timeout); worker.terminate(); };
+worker.onmessage = async event => {
+  if (event.data.type === 'progress') status.textContent = event.data.message;
+  else if (event.data.type === 'ready') {
+    const canvas = new OffscreenCanvas(64,64); const context = canvas.getContext('2d'); context.fillStyle = '#b0dce9'; context.fillRect(0,0,64,64);
+    const frame = canvas.transferToImageBitmap(); worker.postMessage({type:'frame',frame,timestamp:performance.now()},[frame]);
+  } else if (event.data.type === 'result') {
+    status.textContent = event.data.failed ? 'FAIL: worker could not process the image' : event.data.active ? 'FAIL: blank frame detected a hand' : 'PASS: model loaded and processed an image in a worker';
+    clearTimeout(timeout); worker.terminate();
+  } else if (event.data.type === 'error') { status.textContent = 'FAIL: ' + event.data.message + ' ' + (event.data.detail || ''); clearTimeout(timeout); worker.terminate(); }
+}; worker.postMessage({type:'init'});
+</script></html>

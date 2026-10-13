@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d36">
+  <meta name="description" content="Keep your nerve. Jump, dodge, and pull your parachute late in Plan-Jump Deluxe, a free solo and local two-player skydiving game.">
+  <title>Plan-Jump Deluxe — Keep your nerve.</title>
+  <link rel="icon" href="./public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#flight-deck">Skip to the game</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Plan-Jump Deluxe home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22a19 19 0 0 1 38 0H5Zm0 0 19 18 19-18M15 22l9 18 9-18M24 3v19" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="42" r="2" fill="currentColor"/></svg>
+        <span>PLAN<span class="brand-dash">/</span>JUMP<small>DELUXE EDITION</small></span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation"><a href="#how-to-play">How to play <span aria-hidden="true">↗</span></a><span class="online-chip"><span class="status-dot"></span> FREE TO FALL</span></nav>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="eyebrow">THE FREEFALL CLUB <span>VOL. 02</span></p><h1 id="page-title">KEEP YOUR <span>NERVE.</span><svg viewBox="0 0 80 80" aria-hidden="true"><path d="m40 4 7 22 23-8-12 20 19 14-25 1-1 24-14-20-20 12 8-23-21-7 23-5Z" fill="currentColor"/></svg></h1></div>
+        <div class="intro-copy"><p>A little courage.<br>A very long way down.</p><span>Dodge the traffic. Beat gravity. Pull late.<br>One clean landing is all it takes.</span></div>
+      </section>
+      <section class="flight-deck" id="flight-deck" aria-labelledby="deck-title">
+        <div class="deck-bar"><h2 id="deck-title"><span class="status-dot"></span> FLIGHT DECK</h2><p id="deck-status">READY FOR TAKE-OFF</p><div class="deck-tools"><button class="tool-button" id="sound-toggle" type="button" aria-pressed="false" aria-label="Enable sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 6 8H3v8h3l5 4V4ZM15 9l6 6m0-6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span id="sound-label">Sound off</span></button><button class="tool-button" id="pause-button" type="button" hidden><span aria-hidden="true">Ⅱ</span> Pause</button></div></div>
+        <div class="game-stage" id="game-stage">
+          <canvas id="game-canvas" width="1000" height="620" tabindex="0" aria-label="Skydiving playfield. Use the controls below or the keyboard to jump, dodge obstacles, and deploy above 150 metres."></canvas>
+          <div class="home-panel" id="home-panel">
+            <p class="flight-ticket">FLIGHT 001 <span>YOU'RE CLEARED TO JUMP</span></p><h2>The ground is<br> the finish line<span>.</span></h2><p class="home-copy">Fast on the way down. Safe at the bottom.<br> Go solo or settle it with a friend.</p>
+            <fieldset class="difficulty-picker"><legend>CHOOSE YOUR DROP</legend><div class="difficulty-options"><label><input type="radio" name="difficulty" value="cruise" checked><span>Cruise<small>Find your feet</small></span></label><label><input type="radio" name="difficulty" value="rush"><span>Rush<small>Keep it sharp</small></span></label><label><input type="radio" name="difficulty" value="storm"><span>Storm<small>Trust your nerve</small></span></label></div></fieldset>
+            <div class="launch-actions"><button id="solo-button" class="button button-lime" type="button">Solo flight <span aria-hidden="true">↗</span></button><button id="duo-button" class="button button-navy" type="button">2-player race <span aria-hidden="true">↗</span></button></div>
+            <button class="demo-link" id="demo-button" type="button"><span class="play-icon" aria-hidden="true">▶</span> Watch a demo <span>NO HANDS REQUIRED</span></button>
+          </div>
+          <div class="game-hud" id="game-hud" hidden>
+            <div class="pilot-hud" id="pilot-0"><p class="pilot-name">YOUR FLIGHT <span id="score-0"></span></p><p class="altitude"><span id="altitude-0">960</span><small>M</small></p><p class="pilot-state" id="pilot-state-0">READY TO JUMP</p><p class="flight-time" id="flight-time-0">0.00 s</p></div>
+            <div class="launch-clock" id="launch-clock"><small>JUMP NOW</small><strong id="jump-timer">3.0</strong></div>
+            <div class="pilot-hud pilot-right" id="pilot-1" hidden><p class="pilot-name">PLAYER 02 <span id="score-1"></span></p><p class="altitude"><span id="altitude-1">960</span><small>M</small></p><p class="pilot-state" id="pilot-state-1">READY TO JUMP</p><p class="flight-time" id="flight-time-1">0.00 s</p></div>
+            <span class="demo-badge" id="demo-badge" hidden><span class="status-dot"></span> AUTOPILOT DEMO</span><p class="camera-status" id="camera-status" hidden></p>
+          </div>
+        </div>
+        <div class="deck-footer" id="home-footer"><span><span class="status-dot"></span> SOLO + LOCAL MULTIPLAYER</span><span id="home-record">CRUISE BEST <strong>—</strong></span><span>100% BROWSER. 0% SIGN-UP.</span></div>
+        <div class="flight-controls" id="flight-controls" hidden>
+          <div class="player-controls" data-player="0"><span class="control-name" id="control-name-0">YOUR CONTROLS</span><div class="steer-buttons"><button class="steer" data-move="-1" type="button" aria-label="Player 1 move left">←</button><button class="steer" data-move="1" type="button" aria-label="Player 1 move right">→</button></div><button class="action-button" data-action="0" type="button"><span class="action-label">Jump</span><kbd>SPACE</kbd></button></div>
+          <div class="player-controls" data-player="1" id="second-controls" hidden><span class="control-name">PLAYER 02</span><div class="steer-buttons"><button class="steer" data-move="-1" type="button" aria-label="Player 2 move left">←</button><button class="steer" data-move="1" type="button" aria-label="Player 2 move right">→</button></div><button class="action-button" data-action="1" type="button"><span class="action-label">Jump</span><kbd>↑</kbd></button></div>
+          <button class="camera-button" id="camera-button" type="button" aria-pressed="false">Try hand steering <span aria-hidden="true">↗</span></button><p class="demo-controls" id="demo-controls" hidden>Autopilot is flying. Watch the dodges, then pull just above the red line.<button class="text-button" id="demo-play-button" type="button">Your turn ↗</button></p>
+        </div>
+      </section>
+      <div class="flight-notes"><p><span aria-hidden="true">↳</span> <span id="flight-note">BEST OF THREE WITH A FRIEND. ONE PERSONAL BEST ON YOUR OWN.</span></p><span>EST. FLIGHT TIME <strong>12–30 SEC</strong></span></div>
+      <section class="how-to-play" id="how-to-play" aria-labelledby="guide-title">
+        <div class="section-heading"><h2 id="guide-title">Three moves. <span>One good landing.</span></h2><span class="small-stamp">THE FLIGHT MANUAL ↘</span></div>
+        <div class="guide-grid">
+          <article class="guide-card"><div class="guide-top"><span class="step-number">01</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6v26m-8-8 8 8 8-8M6 5h28" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><h3>Take the leap.</h3><p>You have three seconds to leave the helicopter. Press <kbd>Space</kbd> in solo, or tap Jump.</p></article>
+          <article class="guide-card"><div class="guide-top"><span class="step-number">02</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 20h32m-25-7-7 7 7 7m18-14 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><h3>Thread the sky.</h3><p>Move with <kbd>←</kbd> <kbd>→</kbd> or the touch buttons. Avoid planes, balloons, and drones.</p></article>
+          <article class="guide-card"><div class="guide-top"><span class="step-number">03</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 19a15 15 0 0 1 30 0H5Zm0 0 15 15 15-15M20 4v15m-8 0 8 15 8-15" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><h3>Pull with purpose.</h3><p>Press your jump button again to open the chute <strong>above 150 m</strong>. Pull late. Land first.</p></article>
+        </div>
+        <details class="controls-guide"><summary>All controls & flight rules <span aria-hidden="true">+</span></summary><div class="controls-detail"><p><strong>Solo:</strong> Space to jump / deploy; ← and → to steer. <strong>Player 1:</strong> W to jump / deploy; A and D to steer. <strong>Player 2:</strong> ↑ to jump / deploy; ← and → to steer.</p><p><strong>Pause:</strong> P or Escape. <strong>Restart:</strong> R. <strong>Sound:</strong> M. Two-player races are first to two wins. Matching outcomes in the same simulation step are a draw; replay that round.</p><p>Solo uses a fixed course for each difficulty. Records are kept on this device and separated by keyboard, touch, and camera steering. Camera controls are optional: hand tracking runs locally, and Space or the on-screen button still controls your jump and chute.</p></div></details>
+      </section>
+      <footer class="site-footer"><p>PLAN/JUMP <span>GOOD LUCK DOWN THERE.</span></p><a href="https://github.com/deleted04user/plan-jump-deluxe" target="_blank" rel="noopener noreferrer">View the source <span aria-hidden="true">↗</span></a></footer>
+    </main>
+  </div>
+  <p class="sr-only" id="announcements" role="status" aria-live="polite" aria-atomic="true"></p>
+  <dialog class="flight-dialog" id="pause-dialog" aria-labelledby="pause-title"><div class="dialog-content"><p class="eyebrow">HOLDING PATTERN</p><h2 id="pause-title">Catch your breath.</h2><p>The flight is paused. Your altitude and time are safe.</p><button class="button button-lime" id="resume-button" type="button">Back to the sky ↗</button><div class="dialog-secondary"><button class="text-button" id="pause-restart" type="button">Restart flight</button><button class="text-button" id="pause-menu" type="button">Flight deck</button></div></div></dialog>
+  <dialog class="flight-dialog result-dialog" id="result-dialog" aria-labelledby="result-title"><div class="dialog-content"><p class="eyebrow" id="result-eyebrow">FLIGHT REPORT</p><div class="result-symbol" id="result-symbol" aria-hidden="true">↗</div><h2 id="result-title">Good drop.</h2><p id="result-copy"></p><div class="result-stats" id="result-stats"></div><p class="match-score" id="match-score" hidden></p><button class="button button-lime" id="again-button" type="button">Fly again ↗</button><button class="text-button" id="result-menu" type="button">Back to flight deck</button></div></dialog>
+  <noscript><p class="no-script">This game needs JavaScript. Enable it in your browser to join the flight.</p></noscript>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
