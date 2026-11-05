@@ -18,6 +18,8 @@ A free browser arcade game: jump from a helicopter, dodge the sky traffic, and d
 
 </div>
 
+**Explore:** [Play](https://deleted04user.github.io/plan-jump-deluxe/) · [Controls](#controls) · [Run locally](#run-locally) · [Camera and records](#camera-and-records)
+
 ## The game
 
 Solo is a race against your personal best. Local two-player mode is a best-of-three race on one keyboard: leave the helicopter within three seconds, avoid every obstacle, and land safely before your opponent. Open the chute above **150 metres**. The later you open it, the less time you spend drifting.
@@ -107,3 +109,7 @@ Records are local to this browser. Difficulty and keyboard, touch, or camera inp
 Based on [OUSSAAMAA/plan-jump](https://github.com/OUSSAAMAA/plan-jump). The original skydiver, plane, explosion artwork, and music are preserved in the repository. Deluxe introduces a new interface and a dependency-free game simulation and renderer.
 
 Released under the [ISC License](LICENSE), matching the original package's declared license.
+
+---
+
+[Oussama Oulkaid · GitHub profile](https://github.com/deleted04user) · [Explore the project portfolio](https://github.com/deleted04user/deleted04user/blob/main/PORTFOLIO.md)
